@@ -16,15 +16,28 @@ export function InitialScreen({ onYesClick, images }: InitialScreenProps) {
     { top: number; left: number } | undefined
   >(undefined);
   const noButtonRef = useRef<HTMLButtonElement>(null);
+  const cursorPositionRef = useRef({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      cursorPositionRef.current = { x: event.clientX, y: event.clientY };
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
 
   useEffect(() => {
     // We get the button's initial position and set it.
     // This makes it a "fixed" element from the start, allowing smooth transitions.
-    if (noButtonRef.current) {
+    if (noButtonRef.current && !noButtonPosition) {
       const rect = noButtonRef.current.getBoundingClientRect();
       setNoButtonPosition({ top: rect.top, left: rect.left });
     }
-  }, []); // Empty dependency array ensures this runs only once on mount.
+  }, [noButtonPosition]);
 
   const getCurrentImage = () => {
     if (noCount < 2) return images[0];
@@ -40,8 +53,26 @@ export function InitialScreen({ onYesClick, images }: InitialScreenProps) {
 
     if (noButtonRef.current) {
       const button = noButtonRef.current;
-      const newX = Math.random() * (window.innerWidth - button.offsetWidth);
-      const newY = Math.random() * (window.innerHeight - button.offsetHeight);
+      const buttonWidth = button.offsetWidth;
+      const buttonHeight = button.offsetHeight;
+      const { x: cursorX, y: cursorY } = cursorPositionRef.current;
+
+      let newX = 0;
+      let newY = 0;
+      let isOverlapping = true;
+      let attempts = 0;
+
+      while (isOverlapping && attempts < 20) {
+        newX = Math.random() * (window.innerWidth - buttonWidth);
+        newY = Math.random() * (window.innerHeight - buttonHeight);
+
+        // Check for overlap with cursor
+        const overlapsX = cursorX >= newX && cursorX <= newX + buttonWidth;
+        const overlapsY = cursorY >= newY && cursorY <= newY + buttonHeight;
+
+        isOverlapping = overlapsX && overlapsY;
+        attempts++;
+      }
       setNoButtonPosition({ top: newY, left: newX });
     }
   };
