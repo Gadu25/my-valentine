@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import type { ImagePlaceholder } from "@/lib/placeholder-images";
@@ -16,6 +16,15 @@ export function InitialScreen({ onYesClick, images }: InitialScreenProps) {
     { top: number; left: number } | undefined
   >(undefined);
   const noButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    // We get the button's initial position and set it.
+    // This makes it a "fixed" element from the start, allowing smooth transitions.
+    if (noButtonRef.current) {
+      const rect = noButtonRef.current.getBoundingClientRect();
+      setNoButtonPosition({ top: rect.top, left: rect.left });
+    }
+  }, []); // Empty dependency array ensures this runs only once on mount.
 
   const getCurrentImage = () => {
     if (noCount < 2) return images[0];
@@ -92,7 +101,7 @@ export function InitialScreen({ onYesClick, images }: InitialScreenProps) {
               style={
                 noButtonPosition
                   ? { position: "fixed", top: noButtonPosition.top, left: noButtonPosition.left }
-                  : { position: "relative" }
+                  : { position: "relative", opacity: 0 }
               }
             >
               NO 🙅
