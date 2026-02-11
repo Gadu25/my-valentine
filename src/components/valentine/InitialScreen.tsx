@@ -12,7 +12,6 @@ type InitialScreenProps = {
 
 export function InitialScreen({ onYesClick, images }: InitialScreenProps) {
   const [noCount, setNoCount] = useState(0);
-  const [yesButtonScale, setYesButtonScale] = useState(1);
   const [noButtonPosition, setNoButtonPosition] = useState<
     { top: number; left: number } | undefined
   >(undefined);
@@ -29,7 +28,6 @@ export function InitialScreen({ onYesClick, images }: InitialScreenProps) {
 
   const handleNoInteraction = () => {
     setNoCount((prev) => prev + 1);
-    setYesButtonScale((prev) => prev + 0.1);
 
     if (noButtonRef.current) {
       const button = noButtonRef.current;
@@ -77,8 +75,7 @@ export function InitialScreen({ onYesClick, images }: InitialScreenProps) {
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button
             onClick={onYesClick}
-            className="text-lg px-8 py-6 h-auto transition-transform duration-300"
-            style={{ transform: `scale(${yesButtonScale})` }}
+            className="text-lg px-8 py-6 h-auto"
             size="lg"
           >
             {getYesButtonText()}
