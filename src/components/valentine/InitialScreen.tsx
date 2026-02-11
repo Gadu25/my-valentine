@@ -112,32 +112,41 @@ export function InitialScreen({ onYesClick, images }: InitialScreenProps) {
           Will you be my Valentine?
         </h1>
 
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="mt-8 flex items-center justify-center gap-6">
           <Button
             onClick={onYesClick}
-            className="text-lg px-8 py-6 h-auto"
+            className="text-lg px-6 py-2 h-auto"
             size="lg"
           >
             {getYesButtonText()}
           </Button>
 
-          <div className="w-auto h-[60px]">
+          {noButtonPosition && (
             <Button
-              ref={noButtonRef}
-              onClick={handleNoInteraction}
-              onPointerEnter={handleNoInteraction}
-              className="text-lg px-8 py-6 h-auto transition-all duration-300"
+              className="text-lg px-6 py-2 h-auto transition-all duration-300 w-[100px] opacity-0 z-0"
               variant="destructive"
               size="lg"
-              style={
-                noButtonPosition
-                  ? { position: "fixed", top: noButtonPosition.top, left: noButtonPosition.left }
-                  : { position: "relative", opacity: 0 }
-              }
             >
-              NO 🙅
+              ...
             </Button>
-          </div>
+          )}
+
+          <Button
+            ref={noButtonRef}
+            onClick={handleNoInteraction}
+            onPointerEnter={handleNoInteraction}
+            className="text-lg px-6 py-2 h-auto transition-all duration-300 w-[100px] z-1"
+            variant="destructive"
+            size="lg"
+            style={
+              noButtonPosition
+                ? { position: "fixed", top: noButtonPosition.top, left: noButtonPosition.left }
+                : { position: "relative", opacity: 0 }
+            }
+          >
+            NO 🙅
+          </Button>
+          
         </div>
       </div>
     </div>
