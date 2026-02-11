@@ -1,3 +1,34 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "face1",
+      "description": "A person with a normal, neutral expression.",
+      "imageUrl": "https://images.unsplash.com/photo-1626470690166-eef489fb94e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxuZXV0cmFsJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzcwNzc2NjI3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "neutral portrait"
+    },
+    {
+      "id": "face2",
+      "description": "A person with a slightly confused expression.",
+      "imageUrl": "https://images.unsplash.com/photo-1623510848605-3cf32d03059e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjb25mdXNlZCUyMHBvcnRyYWl0fGVufDB8fHx8MTc3MDc3NjYyN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "confused portrait"
+    },
+    {
+      "id": "face3",
+      "description": "A person with an annoyed expression.",
+      "imageUrl": "https://images.unsplash.com/photo-1541112324160-e8a425b58dac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxhbm5veWVkJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzcwNzc2NjI4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "annoyed portrait"
+    },
+    {
+      "id": "face4",
+      "description": "A person looking angry.",
+      "imageUrl": "https://images.unsplash.com/photo-1689152842048-6f0e4ef8e3f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxhbmdyeSUyMHBvcnRyYWl0fGVufDB8fHx8MTc3MDc3NjYyN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "angry portrait"
+    },
+    {
+      "id": "face_happy",
+      "description": "A person with a very happy, smiling expression.",
+      "imageUrl": "https://images.unsplash.com/photo-1629747490241-624f07d70e1e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxoYXBweSUyMHBvcnRyYWl0fGVufDB8fHx8MTc3MDc3NjYyN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "happy portrait"
+    }
+  ]
 }
