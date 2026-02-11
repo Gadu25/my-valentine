@@ -3,20 +3,41 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import type { ImagePlaceholder } from "@/lib/placeholder-images";
 
 type InitialScreenProps = {
   onYesClick: () => void;
-  images: ImagePlaceholder[];
 };
 
-export function InitialScreen({ onYesClick, images }: InitialScreenProps) {
+export function InitialScreen({ onYesClick }: InitialScreenProps) {
   const [noCount, setNoCount] = useState(0);
   const [noButtonPosition, setNoButtonPosition] = useState<
     { top: number; left: number } | undefined
   >(undefined);
   const noButtonRef = useRef<HTMLButtonElement>(null);
   const cursorPositionRef = useRef({ x: 0, y: 0 });
+
+  const images = [
+    {
+      id: "1",
+      imageUrl: "/images/valentine-1.jpg",
+      description: "Valentine background 1",
+    },
+    {
+      id: "2",
+      imageUrl: "/images/valentine-2.jpg",
+      description: "Valentine background 2",
+    },
+    {
+      id: "3",
+      imageUrl: "/images/valentine-3.jpg",
+      description: "Valentine background 3",
+    },
+    {
+      id: "4",
+      imageUrl: "/images/valentine-4.jpg",
+      description: "Valentine background 4",
+    },
+  ];
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
@@ -79,9 +100,9 @@ export function InitialScreen({ onYesClick, images }: InitialScreenProps) {
 
   const getYesButtonText = () => {
     const texts = [
-      "YES ❤️", "Please? ❤️", "Pretty please? ❤️", 
-      "I'm begging! ❤️", "Just click it! ❤️", "You know you want to...",
-      "Say yes!", "I'll be sad...", "One last chance..."
+      "YES ❤️", "Luh? ❤️", "please? ❤️", 
+      "Maawa ka! ❤️", "Just click it! ❤️", "You know you want to 😉",
+      "Say yes!😭", "I'll be sad...😟", "grabe ka ha! 😡"
     ];
     return texts[Math.min(noCount, texts.length - 1)];
   };
@@ -89,20 +110,17 @@ export function InitialScreen({ onYesClick, images }: InitialScreenProps) {
   return (
     <div className="relative w-screen h-screen flex items-center justify-center overflow-hidden">
       {images.map((image) => (
-        image && (
-          <Image
-            key={image.id}
-            src={image.imageUrl}
-            alt={image.description}
-            data-ai-hint={image.imageHint}
-            fill
-            className={`object-cover transition-opacity duration-1000 ${
-              currentImage && currentImage.id === image.id ? "opacity-100" : "opacity-0"
-            }`}
-            quality={100}
-            priority
-          />
-        )
+        <Image
+          key={image.id}
+          src={image.imageUrl}
+          alt={image.description}
+          fill
+          className={`object-cover transition-opacity duration-1000 ${
+            currentImage.id === image.id ? "opacity-100" : "opacity-0"
+          }`}
+          quality={100}
+          priority
+        />
       ))}
 
       <div className="absolute inset-0 bg-black/40" />
@@ -115,7 +133,7 @@ export function InitialScreen({ onYesClick, images }: InitialScreenProps) {
         <div className="mt-8 flex items-center justify-center gap-6">
           <Button
             onClick={onYesClick}
-            className="text-lg px-6 py-2 h-auto"
+            className="text-lg px-6 py-4 h-auto"
             size="lg"
           >
             {getYesButtonText()}
@@ -123,7 +141,7 @@ export function InitialScreen({ onYesClick, images }: InitialScreenProps) {
 
           {noButtonPosition && (
             <Button
-              className="text-lg px-6 py-2 h-auto transition-all duration-300 w-[100px] opacity-0 z-0"
+              className="text-lg px-6 py-4 h-auto transition-all duration-300 w-[100px] opacity-0 z-0"
               variant="destructive"
               size="lg"
             >
@@ -135,7 +153,7 @@ export function InitialScreen({ onYesClick, images }: InitialScreenProps) {
             ref={noButtonRef}
             onClick={handleNoInteraction}
             onPointerEnter={handleNoInteraction}
-            className="text-lg px-6 py-2 h-auto transition-all duration-300 w-[100px] z-1"
+            className="text-lg px-6 py-4 h-auto transition-all duration-300 w-[100px] z-1"
             variant="destructive"
             size="lg"
             style={
@@ -146,7 +164,6 @@ export function InitialScreen({ onYesClick, images }: InitialScreenProps) {
           >
             NO 🙅
           </Button>
-          
         </div>
       </div>
     </div>

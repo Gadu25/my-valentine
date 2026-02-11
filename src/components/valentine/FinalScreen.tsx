@@ -2,21 +2,19 @@
 
 import Image from "next/image";
 import { Confetti } from "./Confetti";
-import type { ImagePlaceholder } from "@/lib/placeholder-images";
 import { Card, CardContent } from "@/components/ui/card";
 
-type FinalScreenProps = {
-  happyImage: ImagePlaceholder;
-};
 
-export function FinalScreen({ happyImage }: FinalScreenProps) {
+export function FinalScreen() {
+  const happyImage = "/images/happy-valentines.jpeg";
+
   return (
     <div className="relative w-screen h-screen flex items-center justify-center">
       {happyImage && (
         <Image
-          src={happyImage.imageUrl}
-          alt={happyImage.description}
-          data-ai-hint={happyImage.imageHint}
+          src={happyImage}
+          alt="happy valentines"
+          data-ai-hint="happy portrait"
           fill
           className="object-cover"
           quality={100}
@@ -25,7 +23,7 @@ export function FinalScreen({ happyImage }: FinalScreenProps) {
       <div className="absolute inset-0 bg-black/30" />
       <Confetti />
       <div className="relative z-10 text-center text-white animate-fade-in-up p-4">
-        <Card className="bg-white/10 backdrop-blur-md border-white/20">
+        <Card className="bg-white/30 backdrop-blur-md border-white/20">
           <CardContent className="p-8 sm:p-12">
             <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold font-headline drop-shadow-lg">
               YAY ❤️ Thank you!
