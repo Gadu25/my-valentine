@@ -81,12 +81,12 @@ export function InitialScreen({ onYesClick, images }: InitialScreenProps) {
             {getYesButtonText()}
           </Button>
 
-          <div className="w-[130px] h-[60px]">
+          <div className="w-auto h-[60px]">
             <Button
               ref={noButtonRef}
               onClick={handleNoInteraction}
               onPointerEnter={handleNoInteraction}
-              className="text-lg px-8 py-6 h-auto w-full transition-all duration-300"
+              className="text-lg px-8 py-6 h-auto transition-all duration-300"
               variant="destructive"
               size="lg"
               style={
