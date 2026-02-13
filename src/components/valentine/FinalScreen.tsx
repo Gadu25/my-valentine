@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 
 export function FinalScreen() {
-  const happyImage = "/images/happy-valentines.jpeg";
+  const happyImage = "/images/happy-valentines.webp";
 
   return (
     <div className="relative w-screen h-screen flex items-center justify-center">

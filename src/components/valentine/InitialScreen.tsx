@@ -19,22 +19,22 @@ export function InitialScreen({ onYesClick }: InitialScreenProps) {
   const images = [
     {
       id: "1",
-      imageUrl: "/images/valentine-1.jpg",
+      imageUrl: "/images/valentine-1.webp",
       description: "Valentine background 1",
     },
     {
       id: "2",
-      imageUrl: "/images/valentine-2.jpg",
+      imageUrl: "/images/valentine-2.webp",
       description: "Valentine background 2",
     },
     {
       id: "3",
-      imageUrl: "/images/valentine-3.jpg",
+      imageUrl: "/images/valentine-3.webp",
       description: "Valentine background 3",
     },
     {
       id: "4",
-      imageUrl: "/images/valentine-4.jpg",
+      imageUrl: "/images/valentine-4.webp",
       description: "Valentine background 4",
     },
   ];
