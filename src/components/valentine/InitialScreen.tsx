@@ -115,7 +115,7 @@ export function InitialScreen({ onYesClick }: InitialScreenProps) {
           src={image.imageUrl}
           alt={image.description}
           fill
-          className={`object-cover transition-opacity duration-1000 ${
+          className={`object-cover object-[center_25%] transition-opacity duration-1000 ${
             currentImage.id === image.id ? "opacity-100" : "opacity-0"
           }`}
           quality={100}
